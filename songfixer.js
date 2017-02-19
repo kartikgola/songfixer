@@ -98,9 +98,8 @@ function fetchMusicMeta(title, artist, callback) {
 
 if (cmdArgs.s) {
     ffmetadata.read(cmdArgs.s, function (err, data) {
-        console.log(data);
         if (err)
-            console.error("Error reading metadata", err);
+            console.error("Error reading metadata", err.message);
         else
             fetchMusicMeta(data.title.replace(/^\d+./g, '').trim(), data.artist, (err, musicMeta) => {
                 if ( err ) 
